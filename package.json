@@ -1,0 +1,10 @@
+{
+  "name": "github_technical_challenge",
+  "version": "1.0.0",
+  "description": "response to part 2",
+  "main": "index.js",
+  "author": "julie",
+  "dependencies": {
+    "request": "^2.88.0"
+  }
+}
