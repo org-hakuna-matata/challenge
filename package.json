@@ -5,6 +5,7 @@
   "main": "index.js",
   "author": "julie",
   "dependencies": {
+    "got": "^11.5.0",
     "request": "^2.88.0"
   }
 }
