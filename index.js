@@ -27,7 +27,7 @@ exports.handler = async (event) => {
     console.log("Body: " + event.body);
 
     try {
-        let secret = event.headers['x-hub-signature'];
+        let secret = event.headers['X-Hub-Signature'] || event.headers['x-hub-signature'];
         console.log ('Header: ' + secret);
         if (secret && verify_signature(secret, event.body)) {
             let body = JSON.parse(event.body);
@@ -43,7 +43,7 @@ exports.handler = async (event) => {
                         return {statusCode: protectResponse.statusCode, body: protectResponse.body};
                     }
                     //notify of protection in issue
-                    const issueResponse = await notifyIssue(repo, protectResponse);
+                    const issueResponse = await notifyIssue(repo, protectResponse.body);
                     if (issueResponse.statusCode !== 201) {
                         return {statusCode: issueResponse.statusCode, body: issueResponse.body};
                     }
@@ -109,7 +109,6 @@ const notifyIssue =  async (repo, protections) => {
 function verify_signature(secret, payload_body){
     let hash = crypto.createHmac('sha1', process.env.secret)
         .update(payload_body)
-        .update('test')
         .digest('hex');
     let signature = 'sha1=' + hash;
     console.log('Compare: ' + signature);
