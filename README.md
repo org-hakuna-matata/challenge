@@ -25,6 +25,8 @@ These instructions will get you a copy of the project up and running with your g
 3. Navigate to your organization settings in GitHub and then click "Webhooks" (https://github.com/organizations/<your_org>/settings/hooks)
 4. Create a new webhook using the URL for your API Gateway. Set Content-Type to application/json and supply a secret. See this web page for further information on secrets: https://developer.github.com/webhooks/securing/. Set this same secret in your AWS lambda environment variables. Select "Let me select individual events." and make sure "Repositories" is checked. Don't forget to ensure your webhook is active!
 
+## Testing the solution
+Feel free to customize the protections and issue message listed in the script!
 
 ## Testing the solution
 
