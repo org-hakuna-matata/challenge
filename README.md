@@ -20,14 +20,15 @@ These instructions will get you a copy of the project up and running with your g
 
 ### Setup
 
-1. Create an API Gateway as desired. Point your gateway to a lambda proxy using this script as your lambda function. Use the generated API gateway URL as the endpoint for your webhook
-2. Navigate to your organization settings in GitHub and then click "Webhooks" (https://github.com/organizations/<your_org>/settings/hooks)
-3. Create a new webhook using the URL for your API Gateway. Set Content-Type to application/json and supply a secret. See this web page for further information on secrets: https://developer.github.com/webhooks/securing/.  Select "Let me select individual events." and make sure "Repositories" is checked. Don't forget to ensure your webhook is active!
+1. Create an AWS lambda using the supplied script. Feel free to use the deploy.zip to deploy. Ensure your lambda function has three environment variables: secret, token, and username. Enter your GitHub username and API token here. We will enter the secret later.
+2. Create an API Gateway as desired. Point your gateway to a lambda proxy using the lambda function you created in step 1. You will use the generated API gateway URL as the endpoint for your webhook.
+3. Navigate to your organization settings in GitHub and then click "Webhooks" (https://github.com/organizations/<your_org>/settings/hooks)
+4. Create a new webhook using the URL for your API Gateway. Set Content-Type to application/json and supply a secret. See this web page for further information on secrets: https://developer.github.com/webhooks/securing/. Set this same secret in your AWS lambda environment variables. Select "Let me select individual events." and make sure "Repositories" is checked. Don't forget to ensure your webhook is active!
 
 
 ## Testing the solution
 
-When you set up the initial webhook, GitHub should send a test automatically
+When you set up the initial webhook, GitHub should send a test automatically. Note that this test should fail, as it does not include a repository action. You can create a new repository to test.
 
 
 ## Built With
